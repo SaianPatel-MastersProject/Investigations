@@ -39,7 +39,7 @@ metricsCompAvg = objAvg.fnMetricsComparison(1, [2, 3, 4]);
 figure('Name', 'CTE Triplet Bar Plot')
 cteTriplet = metricsComp(1).avgMetricsVals(12:14, 2);
 cteTripletArray = (table2array(cteTriplet))';
-b = bar(obj.plottingTools.legendCell, cteTripletArray, 'stacked', 'FaceColor', 'flat');
+b = bar(obj.plottingTools.legendCell, cteTripletArray, 0.4, 'stacked', 'FaceColor', 'flat');
 xlabel('Driver')
 ylabel('Percentage (%)')
 ylim([0, 100])
@@ -65,6 +65,24 @@ for i = 1:size(obj.runData, 2)
     grid minor;
 
 
+
+end
+
+%% rRW Plot
+figure('Name', 'Reducing vs Worsening');
+hold on
+
+for i = 1:size(obj.runData, 2)
+
+    x = obj.runData(i).metricsCTE.rCTE_pct;
+    y = obj.runData(i).metricsCTE.wCTE_pct;
+    z = x ./ (x + y);
+    % scatter(z, z, 36, 'filled');
+    % xlabel('Reducing CTE');
+    % ylabel('Worsening CTE');
+    violinplot(z)
+    grid on;
+    grid minor;
 
 end
 
