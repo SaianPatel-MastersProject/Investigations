@@ -80,6 +80,7 @@ for i = 1:size(obj.runData, 2)
     % scatter(z, z, 36, 'filled');
     % xlabel('Reducing CTE');
     % ylabel('Worsening CTE');
+    % boxplot(z)
     violinplot(z)
     grid on;
     grid minor;
